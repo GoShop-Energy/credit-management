@@ -189,7 +189,7 @@ class SaleOrder(models.Model):
                 "sale_ids": self.ids,
             }
         )
-        action = self.env.ref("account.action_account_payments").read([])[0]
+        action = self.env['ir.actions.act_window']._for_xml_id('account.action_account_payments')
         if action:
             partner = self.commercial_partner_id or self.partner_id
             action["context"] = ctx
